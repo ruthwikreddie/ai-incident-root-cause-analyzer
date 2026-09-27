@@ -1,0 +1,5 @@
+{
+  "logs": "ERROR payments-service: Timeout contacting postgres primary\nWARN retry=1 backoff=2s\nERROR CircuitBreakerOpen DB unreachable",
+  "stack_trace": "OperationalError: could not connect to server: Connection timed out\n  at db.connect()\n  at repository.save_payment()\n  at handler.charge_card()",
+  "metrics": "db_connection_errors=95/min, p95_latency_ms=5100, error_rate=22%, cpu=28%, memory=60%"
+}
