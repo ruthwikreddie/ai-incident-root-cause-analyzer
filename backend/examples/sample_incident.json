@@ -1,6 +1,0 @@
-{
-    "logs": "ERROR auth-service database timeout after 30s retry",
-    "stack_trace": "OperationalError at db.connect() → handler.login()",
-    "metrics": "error_rate=15%, latency_p95=3800ms, cpu=40%"
-  }
-  

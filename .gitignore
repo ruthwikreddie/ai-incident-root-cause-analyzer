@@ -1,6 +1,26 @@
-backend/venv/
-backend/__pycache__/
-backend/*.pyc
-backend/incidents.db
+# Environment variables
 .env
+.env.local
+!.env.example
+
+# Python
+venv/
+.venv/
+backend/venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local database / generated files
+*.db
+*.sqlite
+*.sqlite3
+backend/incident_report.pdf
+
+# Frontend
+node_modules/
+.next/
+
+# macOS
 .DS_Store
