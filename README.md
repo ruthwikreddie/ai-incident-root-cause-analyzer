@@ -1,4 +1,4 @@
-cat > README.md << 'EOF'
+
 # AI Incident Root Cause Analyzer (FastAPI + SQLite + PDF)
 
 AI-powered incident triage backend that analyzes **logs**, **stack traces**, and **metrics** to produce:
