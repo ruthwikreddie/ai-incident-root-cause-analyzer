@@ -2,15 +2,21 @@ import os
 from collections.abc import Generator
 from pathlib import Path
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
+
+load_dotenv()
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 
 DEFAULT_DATABASE_URL = f"sqlite:///{BACKEND_DIR / 'incidents.db'}"
 
-DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_DATABASE_URL)
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    DEFAULT_DATABASE_URL,
+)
 
 connect_args = (
     {"check_same_thread": False}

@@ -1,17 +1,6 @@
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 
-from . import models
 from .api.routes.incidents import router as incidents_router
-from .database import Base, engine
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    Base.metadata.create_all(bind=engine)
-
-    yield
 
 
 app = FastAPI(
@@ -21,7 +10,6 @@ app = FastAPI(
         "stack traces, metrics, root-cause analysis, and postmortems."
     ),
     version="2.0.0",
-    lifespan=lifespan,
 )
 
 
