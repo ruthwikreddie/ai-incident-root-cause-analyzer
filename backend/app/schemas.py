@@ -4,6 +4,14 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 
+IncidentStatus = Literal[
+    "queued",
+    "processing",
+    "completed",
+    "failed",
+]
+
+
 class IncidentRequest(BaseModel):
     logs: str = Field(
         min_length=1,
@@ -23,10 +31,7 @@ class IncidentRequest(BaseModel):
 
 class IncidentAnalysis(BaseModel):
     root_cause: str
-
-    affected_services: list[str] = Field(
-        default_factory=list,
-    )
+    affected_services: list[str] = Field(default_factory=list)
 
     severity: Literal[
         "low",
@@ -36,11 +41,14 @@ class IncidentAnalysis(BaseModel):
     ]
 
     fix_recommendation: str
-
     postmortem_summary: str
 
 
 class IncidentResponse(BaseModel):
     id: int
+    status: IncidentStatus
+    job_id: str | None = None
     created_at: datetime
-    analysis: IncidentAnalysis
+    updated_at: datetime
+    analysis: IncidentAnalysis | None = None
+    error_message: str | None = None
